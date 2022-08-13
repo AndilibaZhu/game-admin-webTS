@@ -1,9 +1,9 @@
 <!--
  * @Author: Andy
  * @Date: 2022-04-25 13:08:20
- * @LastEditTime: 2022-08-09 22:06:34
+ * @LastEditTime: 2022-08-10 16:21:19
 -->
-<template> 
+<template>
   <AppContainer :header-border="true">
     <template #header>
       <span class="app-title">传奇修仙</span>
@@ -18,14 +18,11 @@
     </template>
   </AppContainer>
 </template>
-<script lang="ts" setup>
-
-
-</script>
+<script lang="ts" setup></script>
 <style lang="less">
 .container {
   width: 100%;
-  height:85vh;
+  height: 85vh;
   background-color: rgb(220, 247, 230);
   background-size: cover;
   align-items: center;

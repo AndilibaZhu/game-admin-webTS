@@ -1,8 +1,3 @@
-<!--
- * @Author: Andy
- * @Date: 2022-04-25 12:54:46
- * @LastEditTime: 2022-08-09 22:07:43
--->
 <template>
   <n-config-provider :locale="zhCN">
     <n-layout position="static" class="layout" has-sider>
@@ -22,11 +17,11 @@
           :inverted="state.inverted"
           :collapsed-width="64"
           :collapsed-icon-size="22"
-          default-value="/"
+          :default-value="route.path"
           :options="state.menuOptions"
           :expanded-keys="state.expandedKeys"
           @update:value="handleUpdateValue"
-          @update:expandedKeys="handleExpandedKeys"
+          @update:expanded-keys="handleExpandedKeys"
         />
       </n-layout-sider>
 
@@ -54,30 +49,32 @@
   </n-config-provider>
 </template>
 <script lang="ts" setup>
-import { reactive, onMounted } from 'vue'
+import { reactive } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { MenuOutline } from '@vicons/ionicons5'
-import { useMessage, useNotification, useDialog, NIcon, zhCN, MentionOption } from 'naive-ui'
-import { mainStore } from '@/store/index'
+
+import { useMessage, useNotification, useDialog, zhCN, MentionOption } from 'naive-ui'
+// import { mainStore } from '@/store/index'
 import { ICONS } from '@/utils/icons'
 
 window.$message = useMessage()
 window.$notification = useNotification()
 window.$dialog = useDialog()
-const store = mainStore()
+// const store = mainStore()
 const router = useRouter()
 const route = useRoute()
-interface state {
+interface State {
   collapsed: boolean
   menuOptions: MentionOption[]
   expandedKeys: string[]
   inverted: boolean
+  menuSelected: string
 }
-const state = reactive<state>({
+const state = reactive<State>({
   inverted: false,
   expandedKeys: [route.matched[0]?.path],
   collapsed: false,
   menuOptions: [],
+  menuSelected: route.path,
 })
 const dropOptions = [
   {
@@ -104,13 +101,34 @@ const dropSelect = async (key: any) => {
 state.menuOptions = [
   {
     label: '首页',
-    key: 'home',
+    key: '/home',
     icon: ICONS.home,
+  },
+  {
+    label: '玩家列表',
+    key: '/player',
+    icon: ICONS.user,
+  },
+  {
+    label: '城市列表',
+    key: '/city',
+    icon: ICONS.house,
+    children: [
+      {
+        label: '城市列表',
+        key: '/city/city',
+        icon: ICONS.house,
+      },
+      {
+        label: '地图列表',
+        key: '/city/map',
+        icon: ICONS.map,
+      },
+    ],
   },
 ]
 
 const handleExpandedKeys = (keys: string[]) => {
-  console.log(keys)
   state.expandedKeys = keys
 }
 const handleUpdateValue = (key: string) => {

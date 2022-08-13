@@ -1,12 +1,10 @@
 /*
  * @Author: Andy
  * @Date: 2022-04-24 16:27:39
- * @LastEditTime: 2022-08-09 22:11:35
+ * @LastEditTime: 2022-08-11 21:10:08
  */
 
 import { defineStore } from 'pinia'
-
-
 
 // 创建一个新的 store 实例
 interface state{
@@ -24,5 +22,5 @@ export const mainStore = defineStore('main', {
   getters: {},
   actions: {
 
-  }
+  },
 })

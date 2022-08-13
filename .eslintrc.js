@@ -1,7 +1,7 @@
 /*
  * @Author: Andy
  * @Date: 2022-05-01 12:40:33
- * @LastEditTime: 2022-06-30 14:46:21
+ * @LastEditTime: 2022-08-12 16:25:36
  */
 module.exports = {
   root: true,
@@ -9,11 +9,7 @@ module.exports = {
     defineEmits: 'readonly',
     defineProps: 'readonly',
   },
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:vue/vue3-recommended',
-    'airbnb-base',
-  ],
+  extends: ['plugin:@typescript-eslint/recommended', 'plugin:vue/vue3-recommended', 'airbnb-base'],
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
@@ -21,6 +17,17 @@ module.exports = {
   rules: {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // 禁用 debugger
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // 禁用 console
+    'vue/multi-word-component-names': 'off',
+    // 强制每行的最大属性数
+
+    'vue/max-attributes-per-line': [
+      'error',
+      {
+        singleline: 10,
+        multiline: 10,
+      },
+    ],
+
     'no-bitwise': 'off', // 禁用按位运算符
     'no-tabs': 'off', // 禁用 tab
     'array-element-newline': ['error', 'consistent'], // 强制数组元素间出现换行
@@ -77,20 +84,6 @@ module.exports = {
     'class-methods-use-this': 'off', // 强制类方法使用 this
     'vue/html-indent': ['error', 2], // 在<template>中强制一致缩进
     'vue/html-self-closing': 'off', // 执行自闭合的风格
-    'vue/max-attributes-per-line': [
-      // 强制每行属性的最大数量
-      'warn',
-      {
-        singleline: {
-          max: 30,
-          allowFirstLine: true,
-        },
-        multiline: {
-          max: 10,
-          allowFirstLine: false,
-        },
-      },
-    ],
     'vue/singleline-html-element-content-newline': 'off', // 要求单行元素的内容前后有一个换行符
   },
 }

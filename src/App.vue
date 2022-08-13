@@ -1,7 +1,7 @@
 <!--
  * @Author: Andy
  * @Date: 2022-04-24 16:00:45
- * @LastEditTime: 2022-06-30 17:56:37
+ * @LastEditTime: 2022-08-13 11:12:08
   <n-config-provider :theme="darkTheme">
     </n-config-provider>
     import { NConfigProvider, darkTheme } from "naive-ui";
@@ -19,6 +19,7 @@
 </template>
 <script lang="ts" setup>
 
+document.title = import.meta.env.VITE_TITLE
 </script>
 
 <style>
