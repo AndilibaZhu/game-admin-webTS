@@ -1,7 +1,7 @@
 <!--
  * @Author: Andy
  * @Date: 2022-08-11 15:13:02
- * @LastEditTime: 2022-08-12 16:27:58
+ * @LastEditTime: 2022-08-18 14:10:16
 -->
 <template>
   <AppContainer :header-border="true" :loading="state.pageLoading" :page-percentage="state.pagePercentage">
@@ -102,9 +102,9 @@ const userColumns: DataTableColumns<User> = [
       NSwitch,
       {
         defaultValue: row.isBaned,
-        onUpdateValue: (e: boolean) => {
+        onUpdateValue: (e: boolean) => { 
           console.log(e)
-          userApi.banUser({ id: row._id, isBaned: e })
+          userApi.banUser({ id: row._id, isBaned: e })  
         },
       },
       null,
@@ -117,7 +117,7 @@ const userColumns: DataTableColumns<User> = [
     render: row => createVNode(
       NSwitch,
       {
-        defaultValue: row.isBaned,
+        defaultValue: row.isDeleted,
         onUpdateValue: (e: boolean) => {
           console.log(e)
           userApi.deleteUser({ id: row._id, isDeleted: e })

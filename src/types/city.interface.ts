@@ -1,7 +1,7 @@
 /*
  * @Author: Andy
  * @Date: 2022-08-12 15:33:20
- * @LastEditTime: 2022-08-12 23:07:53
+ * @LastEditTime: 2022-08-19 13:54:44
  */
 export class City {
   _id?: string
@@ -13,6 +13,8 @@ export class City {
   isCity: boolean // 是否是城市
 
   isCapital: boolean // 是否是首都
+
+  isRaid: boolean // 是否是副本
 
   level: number // 等级要求
 
@@ -36,11 +38,16 @@ export class City {
 
   tags: string[] // 标签
 
+  mapSize: number // 地图大小
+
+  mapBackground: string // 地图背景
+  
   constructor() {
     this.portal = []
     this.cityName = ''
     this.isCity = false
     this.isCapital = false
+    this.isRaid = false
     this.level = 0
     this.dec = ''
     this.monsters = []
@@ -52,6 +59,8 @@ export class City {
     this.mapUnits = []
     this.tiledMap = ''
     this.tags = []
+    this.mapBackground = '#FFFFFFFF'
+    this.mapSize = 50
   }
 }
 export interface MapUnits {
@@ -71,4 +80,8 @@ export interface SearchOption {
     isCity?: boolean;
     isCapital?: boolean;
   };
+}
+export interface MapDef {
+  mapSize: number; // 地图大小
+  mapBackground: string; // 地图背景
 }
