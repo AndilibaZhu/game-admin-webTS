@@ -1,7 +1,7 @@
 <!--
  * @Author: Andy
  * @Date: 2022-08-12 14:46:47
- * @LastEditTime: 2022-08-19 14:23:54
+ * @LastEditTime: 2022-09-04 11:14:03
 -->
 <template>
   <n-modal v-model:show="state.modalShowAdd">
@@ -233,7 +233,7 @@ import { SVGICONS } from '@/utils/icons'
 import { mainStore } from '@/store'
 import citiesListVue from '../components/citiesList.vue'
 import buffListVue from '../components/buffList.vue'
-import npcListVue from '../components/npcList.vue'
+import npcListVue from '../components/NPCList.vue'
 import monsterListVue from '../components/monsterList.vue'
 import cityApi from '@/api/city'
 
