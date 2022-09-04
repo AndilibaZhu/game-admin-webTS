@@ -1,12 +1,12 @@
 /*
  * @Author: Andy
  * @Date: 2022-05-05 13:30:24
- * @LastEditTime: 2022-08-12 17:35:06
+ * @LastEditTime: 2022-09-03 22:55:17
  */
 import { PersonOutline, HomeOutline, SunnyOutline, Moon, ExitOutline, SettingsOutline, StarOutline, HandRightOutline, BedOutline, ListSharp } from '@vicons/ionicons5'
 import { ChairOutlined, HouseOutlined } from '@vicons/material'
 import { FireTwotone } from '@vicons/antd'
-import { Map } from '@vicons/carbon'
+import { Map, Monster } from '@vicons/carbon'
 import { NIcon } from 'naive-ui'
 import { Component, createVNode } from 'vue'
 import fuben from '@/utils/svgs/fuben.vue'
@@ -30,6 +30,11 @@ export const ICONS = {
   bed: renderIcon(BedOutline),
   project: renderIcon(ListSharp),
   hotsale: renderIcon(FireTwotone),
+  monster: renderIcon(Monster),
+  fuben: renderIcon(fuben),
+  outside: renderIcon(outside),
+  town: renderIcon(town),
+  mainCity: renderIcon(mainCity),
 }
 
 export const SVGICONS = {

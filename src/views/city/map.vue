@@ -1,7 +1,7 @@
 <!--
  * @Author: Andy
  * @Date: 2022-08-12 14:46:41
- * @LastEditTime: 2022-08-19 21:35:00
+ * @LastEditTime: 2022-08-26 10:11:46
 -->
 <template>
   <AppContainer :header-border="true" :loading="state.pageLoading" :page-percentage="state.pagePercentage">
@@ -12,7 +12,7 @@
     </template>
     <template #default>
       <n-grid :cols="24" style="height: 100%">
-        <n-gi :span="4" style="border: 1px solid black; height: 90%">
+        <n-gi :span="4" style="height: 90%;padding: 10px;">
           <n-space vertical style="text-align: left">
             <span class="app-title">地图列表</span>
             <n-radio-group name="radiogroup" @update:value="citySelectChange">
@@ -24,14 +24,14 @@
             </n-radio-group>
           </n-space>
         </n-gi>
-        <n-gi id="mapCanvas" :span="16" style="border: 1px solid black; height: 90%">
+        <n-gi id="mapCanvas" :span="16" style="height: 90%;padding: 10px;">
           <div :style="{ width: state.mapDef.canvasWidth + 'px', height: state.mapDef.canvasWidth + 'px' }">
             <div style="position: absolute">
               <tr
                 v-for="i in state.currentSelectCity.mapSize"
                 :key="i"
                 :style="{
-                  width: state.mapDef.canvasWidth + 'px',
+                  width: state.mapDef.canvasWidth + 'px', 
                   height: state.mapDef.canvasWidth / state.currentSelectCity.mapSize + 'px',
                 }"
               >
@@ -74,7 +74,7 @@
             </div>
           </div>
         </n-gi>
-        <n-gi :span="4" style="border: 1px solid black; height: 90%; justify-content: center">
+        <n-gi :span="4" style="height: 90%;padding: 10px; justify-content: center">
           <n-space vertical>
             <div>背景颜色</div>
             <n-color-picker :value="state.currentSelectCity.mapBackground" :modes="['hex']" style="width: 100%" />
@@ -83,7 +83,7 @@
                 <n-form-item label="长&宽："><n-input-number :value="state.currentSelectCity.mapSize" /></n-form-item>
               </n-form>
             </div>
-            <n-collapse accordion @update:expanded-names="expandedNames => (state.unitTypeSelect = expandedNames['0'])">
+            <n-collapse accordion style="text-align: left" @update:expanded-names="expandedNames => (state.unitTypeSelect = expandedNames['0'])">
               <n-collapse-item title="传送门" name="1">
                 <template #default>
                   <n-radio-group name="radio2group" style="text-align: left" @update:value="portalSelectChange">
@@ -149,7 +149,10 @@ const state = reactive<State>({
 
 const mapClick = async (i: number, j: number) => {
   // window.$message.info(`点击了${ i },${ j }`)
-  console.log(state.unitTypeSelect)
+  if (!state.unitTypeSelect) {
+    window.$message.info('请选择unit')
+    return
+  }
   switch (state.unitTypeSelect) {
     case '1':
       // 数组是否已包含该元素
@@ -204,6 +207,7 @@ const initPage = async () => {
   state.citiesSimple = await cityAPI.getAllCitiesSimple()
 }
 initPage()
+
 onMounted(() => {
   setTimeout(() => {
     creatMapCanvas()

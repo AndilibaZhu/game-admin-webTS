@@ -126,6 +126,12 @@ state.menuOptions = [
       },
     ],
   },
+  {
+    label: '怪物列表',
+    key: '/monster/list',
+    icon: ICONS.monster,
+  },
+  
 ]
 
 const handleExpandedKeys = (keys: string[]) => {
