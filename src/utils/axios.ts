@@ -110,9 +110,7 @@ class HttpService {
   ): Promise<IDataWithError<T>> {
     return p
       .then(response => response.data)
-      .catch((error: AxiosError) => ({
-        ...error.response?.data,
-      }))
+      .catch((error: AxiosError) => (console.log(error)))
   }
 }
 
