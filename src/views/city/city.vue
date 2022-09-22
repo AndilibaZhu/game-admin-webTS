@@ -1,7 +1,8 @@
+<!-- eslint-disable vue/valid-v-model -->
 <!--
  * @Author: Andy
  * @Date: 2022-08-12 14:46:47
- * @LastEditTime: 2022-09-04 11:14:03
+ * @LastEditTime: 2022-09-17 00:42:53
 -->
 <template>
   <n-modal v-model:show="state.modalShowAdd">
@@ -25,9 +26,6 @@
           </n-form-item-gi>
           <n-form-item-gi :span="8" label="描述">
             <n-input v-model:value="state.createCity.dec" placeholder="描述" />
-          </n-form-item-gi>
-          <n-form-item-gi label="怪物列表" :span="8">
-            <n-dynamic-tags v-model:value="state.createCity.monsters" />
           </n-form-item-gi>
           <n-form-item-gi label="NPC列表" :span="8">
             <n-dynamic-tags v-model:value="state.createCity.NPCS" />
@@ -54,7 +52,7 @@
             <n-input-number v-model:value="state.createCity.mapSize" placeholder="地图大小" />
           </n-form-item-gi>
           <n-form-item-gi :span="8" label="地图背景">
-            <n-color-picker v-model:value="state.createCity.mapBackground" :modes="['hex']" style="width: 100%;" />
+            <n-color-picker v-model:value="state.createCity.mapBackground" :modes="['hex']" style="width: 100%" />
           </n-form-item-gi>
         </n-grid>
       </n-form>
@@ -85,9 +83,7 @@
           <n-form-item-gi :span="8" label="描述">
             <n-input v-model:value="state.currentCity.dec" placeholder="描述" />
           </n-form-item-gi>
-          <n-form-item-gi label="怪物列表" :span="8">
-            <n-dynamic-tags v-model:value="state.currentCity.monsters" />
-          </n-form-item-gi>
+
           <n-form-item-gi label="NPC列表" :span="8">
             <n-dynamic-tags v-model:value="state.currentCity.NPCS" />
           </n-form-item-gi>
@@ -113,7 +109,7 @@
             <n-input-number v-model:value="state.currentCity.mapSize" placeholder="地图大小" />
           </n-form-item-gi>
           <n-form-item-gi :span="8" label="地图背景">
-            <n-color-picker v-model:value="state.currentCity.mapBackground" :modes="['hex']" style="width: 100%;" />
+            <n-color-picker v-model:value="state.currentCity.mapBackground" :modes="['hex']" style="width: 100%" />
           </n-form-item-gi>
         </n-grid>
       </n-form>
@@ -139,7 +135,7 @@
   </n-modal>
   <n-modal v-model:show="state.modalShowMonsters">
     <n-card :style="{ width: '70%', height: store.PageHeight * 0.9 + 'px' }" title="怪物选择" :bordered="true" size="huge">
-      <monsterListVue />
+      <monsterListVue :city-chosen="state.clickCity" />
     </n-card>
   </n-modal>
   <AppContainer :header-border="true" :loading="state.pageLoading" :page-percentage="state.pagePercentage">
@@ -158,11 +154,9 @@
     <template #default>
       <n-grid :cols="5" :x-gap="12" :y-gap="8">
         <n-gi v-for="i in state.getcities?.records" :key="i._id">
-          <n-thing style="border: 1px dashed black; padding: 10px; text-align: left;height: 100%;">
+          <n-thing style="border: 1px dashed black; padding: 10px; text-align: left; height: 100%">
             <template #header>
-              <div @click="(state.currentCity=i) && (state.modalShowEdit=true)">
-                城市：{{ i.cityName }}-lv.{{ i.level }}
-              </div>
+              <div style="cursor: pointer" @click=";(state.currentCity = i) && (state.modalShowEdit = true)">城市：{{ i.cityName }}-lv.{{ i.level }}</div>
             </template>
             <template #header-extra>
               <n-popover v-if="i.isRaid" trigger="hover" :keep-alive-on-hover="false" placement="bottom">
@@ -208,9 +202,9 @@
             </template>
             <template #action>
               <n-space justify="end">
-                <n-button size="tiny" @click="state.modalShowNPCs=true">NPC</n-button>
-                <n-button size="tiny" @click="state.modalShowMonsters=true">怪物</n-button>
-                <n-button size="tiny" @click="state.modalShowBuffs=true">Buff</n-button>
+                <n-button size="tiny" @click="state.modalShowNPCs = true">NPC</n-button>
+                <n-button size="tiny" @click="showMonsterListClick(i._id as string)">怪物</n-button>
+                <n-button size="tiny" @click="state.modalShowBuffs = true">Buff</n-button>
                 <n-button size="tiny" @click="showCityListClick(i._id as string)">传送门</n-button>
               </n-space>
             </template>
@@ -340,12 +334,17 @@ const showCityListClick = (id: string) => {
   state.modalShowCities = true
   state.clickCity = id
 }
+const showMonsterListClick = (id: string) => {
+  state.modalShowMonsters = true
+  console.log(id)
+  state.clickCity = id
+}
 window.addEventListener('resize', watchWidth)
 watchWidth()
 getCities(1)
 </script>
 <style lang="less" scoped>
-thing{
+thing {
   width: 100%;
   height: 100%;
   overflow: auto;

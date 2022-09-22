@@ -1,7 +1,7 @@
 /*
  * @Author: Andy
  * @Date: 2022-08-12 15:33:20
- * @LastEditTime: 2022-08-19 13:54:44
+ * @LastEditTime: 2022-09-20 21:52:22
  */
 export class City {
   _id?: string
@@ -20,7 +20,7 @@ export class City {
 
   dec: string // 描述
 
-  monsters: string[] // 怪物列表
+  monsters: MonsterCount[] // 怪物列表(id,地图内怪物数量)
 
   NPCS: string[] // NPC列表
 
@@ -81,6 +81,7 @@ export interface SearchOption {
     isCapital?: boolean;
   };
 }
+export interface MonsterCount { id: string; count: number }
 export interface MapDef {
   mapSize: number; // 地图大小
   mapBackground: string; // 地图背景

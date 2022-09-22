@@ -1,7 +1,7 @@
 <!--
  * @Author: Andy
  * @Date: 2022-04-24 16:00:45
- * @LastEditTime: 2022-08-13 11:12:08
+ * @LastEditTime: 2022-09-07 15:24:08
   <n-config-provider :theme="darkTheme">
     </n-config-provider>
     import { NConfigProvider, darkTheme } from "naive-ui";
@@ -27,7 +27,6 @@ document.title = import.meta.env.VITE_TITLE
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #212930;
 }
 </style>
