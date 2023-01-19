@@ -1,7 +1,7 @@
 /*
  * @Author: Andy
  * @Date: 2022-04-24 16:13:03
- * @LastEditTime: 2022-09-03 22:51:13
+ * @LastEditTime: 2022-09-24 15:34:49
  */
 import { App } from 'vue'
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
@@ -12,6 +12,7 @@ import userlist from '@/views/user/UserList.vue'
 import city from '@/views/city/city.vue'
 import map from '@/views/city/map.vue'
 import monster from '@/views/monster/monster.vue'
+import skill from '@/views/skill/skill.vue'
 // 1. 定义路由组件.
 // 也可以从其他文件导入
 // import store from '@/store'
@@ -45,6 +46,10 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/monster/list',
         component: monster,
+      },
+      {
+        path: '/skill/list',
+        component: skill,
       },
     ],
   },

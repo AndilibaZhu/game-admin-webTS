@@ -1,7 +1,7 @@
 /*
  * @Author: Andy
  * @Date: 2022-05-01 12:40:33
- * @LastEditTime: 2022-08-12 16:25:36
+ * @LastEditTime: 2022-09-22 23:17:31
  */
 module.exports = {
   root: true,
@@ -31,8 +31,9 @@ module.exports = {
     'no-bitwise': 'off', // 禁用按位运算符
     'no-tabs': 'off', // 禁用 tab
     'array-element-newline': ['error', 'consistent'], // 强制数组元素间出现换行
-    'space-before-function-paren': 0,
-    indent: ['off'],
+    'space-before-function-paren': 0, // 函数定义时括号前面要不要有空格
+    indent: ['off'], // 强制使用一致的缩进
+    'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }], // 强制在类成员之间出现空行
     '@typescript-eslint/indent': ['error', 2],
     quotes: ['error', 'single'], // 强制使用一致的反勾号、双引号或单引号
     'comma-dangle': ['error', 'always-multiline'], // 要求或禁止末尾逗号

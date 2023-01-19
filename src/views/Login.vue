@@ -2,17 +2,15 @@
   <div class="login-container">
     <div class="login-box">
       <n-card title="后台" style="background-color: rgba(216, 216, 216, 0.705)">
-
-          <n-form>
-            <n-form-item-row label="用户名">
-              <n-input v-model:value="state.username" autofocus placeholder="用户名" />
-            </n-form-item-row>
-            <n-form-item-row label="密码">
-              <n-input v-model:value="state.password" type="password" show-password-on="click" placeholder="密码" @keyup="handleKeyUp" />
-            </n-form-item-row>
-          </n-form>
-          <n-button type="primary" block @click="loginclick">登录</n-button>
-
+        <n-form>
+          <n-form-item-row label="用户名">
+            <n-input v-model:value="state.username" autofocus placeholder="用户名" />
+          </n-form-item-row>
+          <n-form-item-row label="密码">
+            <n-input v-model:value="state.password" type="password" show-password-on="click" placeholder="密码" @keyup="handleKeyUp" />
+          </n-form-item-row>
+        </n-form>
+        <n-button type="primary" block @click="loginclick">登录</n-button>
       </n-card>
     </div>
   </div>
@@ -48,13 +46,13 @@ const loginclick = async () => {
   }
   sessionStorage.setItem('token', res.token) // session设置token
   router.push('/home')
-
 }
 
 </script>
 
 <style lang="less" scoped>
 .login-container {
+  text-align: center;
   width: 100%;
   height: 100vh;
   background: url(/3.png) 100% 100%;

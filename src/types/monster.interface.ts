@@ -3,7 +3,7 @@ import { GoodsData } from './goodsInfo.interface'
 /*
  * @Author: Andy
  * @Date: 2022-09-07 16:49:12
- * @LastEditTime: 2022-09-08 21:17:39
+ * @LastEditTime: 2022-09-24 15:49:22
  */
 export class Monster {
   _id?: string // 怪物ID
@@ -65,7 +65,7 @@ export interface SearchOption {
     pageNo: number;
     pageLimit: number;
   };
-  searchInfo?: {
+  searchData?: {
     monsterName: string;
   };
 }

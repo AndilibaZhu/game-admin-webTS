@@ -131,6 +131,11 @@ state.menuOptions = [
     key: '/monster/list',
     icon: ICONS.monster,
   },
+  {
+    label: '技能列表',
+    key: '/skill/list',
+    icon: ICONS.book,
+  },
   
 ]
 
